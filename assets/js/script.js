@@ -18,29 +18,19 @@ form.addEventListener('submit', function(event) {
         document.getElementById('infos').classList.remove('hidden');
     
         if (bmi < 18.5) {
-            description = 'Cuidado! Você está abaixo do peso!';
+            window.location.href = "abaixo-peso.html";
         } 
 
-        else if (bmi >= 18.5 && bmi <= 25) {
-            description = "Você está no peso ideal!";
-            value.classList.remove('attention');
-            value.classList.add('normal');
+        else if (bmi >= 18.5 && bmi <= 24.9) {
+            window.location.href = "peso-ideal.html";
         }
 
-        else if (bmi > 25 && bmi <= 30) {
-            description = "Cuidado! Você está com sobrepeso!";
-        }
-
-        else if (bmi > 30 && bmi <= 35) {
-            description = "Cuidado! Você está com obesidade moderada!";
-        }
-
-        else if (bmi > 35 && bmi <= 40) {
-            description = "Cuidado! Você está com obesidade severa!";
+        else if (bmi >= 25 && bmi <= 29.9) {
+            window.location.href = "sobrepeso.html";
         }
 
         else {
-            description = "Cuidado! Você está com obesidade morbida!";
+            window.location.href = "obesidade.html";
         }
 
         value.textContent = bmi.replace('.', ',');
@@ -48,8 +38,12 @@ form.addEventListener('submit', function(event) {
     }
 });
 
+//setTimeout(() => {
+  //  window.location.href = "index.html";
+//}, 1500);
+
 form.addEventListener('keypress', function(event) {
-    if (event.key === 'press') {
+    if (event.key === 'Enter') {
         document.getElementById('#calculate').click();
     }
 });
